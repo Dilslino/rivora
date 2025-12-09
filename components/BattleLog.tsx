@@ -24,26 +24,29 @@ export const BattleLog: React.FC<BattleLogProps> = ({ events }) => {
         )}
         
         {events.map((event) => (
-          <div key={event.id} className="animate-in fade-in slide-in-from-bottom-2 duration-500">
+          <div key={event.id} className="animate-zoom-in">
              <div className={`p-3 rounded border-l-2 relative overflow-hidden ${
                event.type === 'ELIMINATION' ? 'bg-rivora-red/10 border-rivora-red' : 
                event.type === 'REVIVE' ? 'bg-rivora-emerald/10 border-rivora-emerald' :
                event.type === 'WINNER' ? 'bg-rivora-gold/10 border-rivora-gold' :
+               event.type === 'ROUND_START' ? 'bg-rivora-cyan/10 border-rivora-cyan' :
+               event.type === 'ROUND_END' ? 'bg-slate-700/50 border-slate-500' :
                'bg-slate-800/50 border-slate-600'
              }`}>
-               {/* Subtle pulse for new events */}
-               <div className={`absolute inset-0 opacity-20 animate-pulse-fast ${
-                 event.type === 'REVIVE' ? 'bg-rivora-emerald' : 'bg-transparent'
-               }`}></div>
+               {event.type === 'REVIVE' && (
+                 <div className="absolute inset-0 opacity-20 animate-pulse bg-rivora-emerald"></div>
+               )}
 
                <div className="flex justify-between items-start relative z-10">
                   <span className={`text-sm font-medium leading-tight ${
                     event.type === 'ELIMINATION' ? 'text-slate-200' : 
                     event.type === 'REVIVE' ? 'text-rivora-emerald font-bold' :
                     event.type === 'WINNER' ? 'text-rivora-gold font-bold text-lg' :
+                    event.type === 'ROUND_START' ? 'text-rivora-cyan font-bold' :
                     'text-slate-400'
                   }`}>
-                    {event.type === 'REVIVE' && <span className="mr-2">♻️</span>}
+                    {event.type === 'REVIVE' && <span className="mr-2">+</span>}
+                    {event.type === 'ROUND_START' && <span className="mr-2">&gt;</span>}
                     {event.message}
                   </span>
                </div>
