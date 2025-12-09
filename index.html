@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RIVORA | Eliminator Arena</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Teko:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Rajdhani', 'sans-serif'],
+              display: ['Teko', 'sans-serif'],
+            },
+            colors: {
+              rivora: {
+                dark: '#050510',
+                panel: '#0f0f20',
+                violet: '#7c3aed',
+                cyan: '#06b6d4',
+                emerald: '#10b981',
+                red: '#ef4444',
+                gold: '#fbbf24'
+              }
+            },
+            animation: {
+              'pulse-fast': 'pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'glitch': 'glitch 1s linear infinite',
+              'shimmer': 'shimmer 3s linear infinite',
+              'rivora-entrance': 'entrance 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards, shimmer 3s linear infinite',
+              'shatter': 'shatter 0.8s ease-out forwards',
+              'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+              'zoom-in': 'zoomIn 0.6s ease-out forwards',
+              'slide-in-right': 'slideInRight 0.5s ease-out forwards',
+              'bounce-slow': 'bounce 3s infinite',
+            },
+            keyframes: {
+              shimmer: {
+                '0%': { backgroundPosition: '200% center' },
+                '100%': { backgroundPosition: '-200% center' }
+              },
+              entrance: {
+                '0%': { transform: 'translateX(-50vw) skewX(-20deg) scale(0.8)', opacity: '0', filter: 'blur(12px)' },
+                '60%': { transform: 'translateX(20px) skewX(10deg) scale(1.1)', opacity: '1', filter: 'blur(0px)' },
+                '80%': { transform: 'translateX(-10px) skewX(-5deg) scale(0.95)', opacity: '1' },
+                '100%': { transform: 'translateX(0) skewX(0) scale(1)', opacity: '1', filter: 'blur(0px)' }
+              },
+              shatter: {
+                '0%': { transform: 'scale(1)', filter: 'brightness(1) hue-rotate(0deg)' },
+                '20%': { transform: 'scale(1.2) rotate(3deg)', filter: 'brightness(2) hue-rotate(-90deg) contrast(1.5)' },
+                '40%': { transform: 'scale(1.1) rotate(-3deg)', filter: 'brightness(2) hue-rotate(90deg) contrast(1.5)' },
+                '100%': { transform: 'scale(0.9)', filter: 'grayscale(1) brightness(0.5) blur(1px)', opacity: '0.6' }
+              },
+              fadeInUp: { 
+                '0%': { opacity: '0', transform: 'translateY(20px)' }, 
+                '100%': { opacity: '1', transform: 'translateY(0)' } 
+              },
+              zoomIn: { 
+                '0%': { opacity: '0', transform: 'scale(0.95)' }, 
+                '100%': { opacity: '1', transform: 'scale(1)' } 
+              },
+              slideInRight: { 
+                '0%': { opacity: '0', transform: 'translateX(20px)' }, 
+                '100%': { opacity: '1', transform: 'translateX(0)' } 
+              }
+            }
+          },
+        },
+      }
+    </script>
+    <style>
+      body {
+        background-color: #050510;
+        color: #e2e8f0;
+        overflow-x: hidden;
+      }
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #0f0f20;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #334155;
+        border-radius: 3px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #475569;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/",
+    "react/": "https://aistudiocdn.com/react@^19.2.1/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.31.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
